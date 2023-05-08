@@ -72,7 +72,7 @@ def delete_project(project_id):
         print('Problem With ID')
         return redirect(url_for('user_profile'))
     
-@app.route('/update-project/<project_id>')
+@app.route('/update-project/<project_id>', methods=['POST', 'GET'])
 def update_project(project_id):
     project_to_update = Project.query.get(project_id)
     

@@ -5,39 +5,47 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project Tracking App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/site.css">
 </head>
 <body>
-    <header>
-        <a href="{{ url_for('user_profile') }}">Profile</a>
-        <a href="{{ url_for('home') }}">Home</a>
-    </header>
-    <h1>Testing 1,2,3,4!</h1>
-
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+        <a href="{{ url_for('home') }}" class="nav-link">Home</a>
+        <a href="{{ url_for('user_profile') }}" class="nav-link">Profile</a>
+    </nav>
+    <h1>Project Tracking App</h1>
+    <h2>Add Team</h2>
     <div class="form-container">
-        <h2>Add Team</h2>
+        
         <form action="{{url_for('add_team')}}" method="POST">
             {{ team_form.csrf_token() }}
 
             {{ team_form.team_name.label }}
             {{ team_form.team_name }}
-            {{ team_form.submit.label }}
+            
             {{ team_form.submit }}
 
         </form>
     </div>
-
+    <br>
+    <h2>Add Project</h2>
     <div class="form-container">
-        <form action="{{ url_for('add_project') }}" method="POST">
+        
+        <form action="{{ url_for('add_project') }}" method="POST" class="form">
             {{ project_form.csrf_token() }}
             {{ project_form.project_name.label }}
             {{ project_form.project_name }}
+            <br>
             {{ project_form.description.label }}
             {{ project_form.description }}
+            <br>
             {{ project_form.completed.label }}
             {{ project_form.completed }}
+            <br>
             {{ project_form.team_id.label }}
             {{ project_form.team_id }}
-            {{ project_form.submit.label }}
+            
             {{ project_form.submit }}
         </form>
     </div>

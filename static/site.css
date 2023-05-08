@@ -1,0 +1,14 @@
+#project-card{
+    max-width: 25%;
+    display: flex;
+    align-items: center;
+    margin-left: 2%;
+}
+
+#button{
+    max-width: 25%;
+}
+
+.form-container{
+    margin-left: 2%;
+}
