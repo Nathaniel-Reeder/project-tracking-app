@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Tracking App</title>
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('user_profile') }}">Profile</a>
+        <a href="{{ url_for('home') }}">Home</a>
+    </nav>
+
+    <h1>Profile for: {{ user }}</h1>
+    <div>
+        {% for team in teams %}
+            <h3>{{ team.team_name }} Projects</h3>
+            <ol>
+                {% for project in project_list %}
+                    {% if project.team_id == team.id %}
+                        <li>
+                            <ul>
+                                <li>Project Name: {{ project.project_name }}</li>
+                                <li>Description: {{ project.description }}</li>
+                                <li><a href="{{ url_for('update_project', project_id=project.id)}}">Update</a></li>
+                                <li><a href="{{ url_for('delete_project', project_id=project.id)}}">Delete</a></li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
